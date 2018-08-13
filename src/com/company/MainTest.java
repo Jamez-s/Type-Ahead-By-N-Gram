@@ -66,7 +66,7 @@ public class MainTest {
     @Test
     public void getWordsNGramTest(){
         List<String> expected = new ArrayList<>(Arrays.asList("lamb", "rule", "children", "teacher", "lamb", "eager", "lamb", "teacher"));
-        List<String> actual = main.findAllWordsOfNGram(main.getText(), main.getInputWord(), 4);
+        List<String> actual = main.findAllWordsOfNGram(main.getText(), main.getInputWord(), 2);
 
         Assert.assertEquals(expected, actual);
     }
@@ -80,6 +80,7 @@ public class MainTest {
         expected.put("teacher", 2);
         expected.put("children", 1);
         expected.put("eager", 1);
+        expected.put("total", 8);
         Map<String, Integer> actual = main.mapWordOccurences(Arrays.asList("lamb", "rule", "children", "teacher", "lamb", "eager", "lamb", "teacher"));
         Assert.assertEquals(expected, actual);
     }
@@ -101,7 +102,7 @@ public class MainTest {
         String first = "lamb";
         int number = 3;
         int total = 8;
-        String expected = "";
+        String expected = "lamb,0.375; ";
         String actual = main.formatReport(total, number, first);
         Assert.assertEquals(expected, actual);
     }

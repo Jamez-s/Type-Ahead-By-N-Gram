@@ -100,13 +100,7 @@ public class Main {
         Map <String, Integer> myMap = new TreeMap<>();
         int temp;
         for(String s: myList){
-            if(myMap.containsKey(s)){
-                temp = myMap.get(s);
-                myMap.put(s, ++temp);
-            }
-            else
-                myMap.put(s, 1);
-
+            myMap.merge(s, 1, Integer::sum);
         }
         myMap.put("total", myList.size());
         return myMap;
@@ -128,7 +122,7 @@ public class Main {
             }
 
         }
-        System.out.println();
+        //System.out.println();
     }
 
     public String formatReport(int total, int mapped, String word) {
